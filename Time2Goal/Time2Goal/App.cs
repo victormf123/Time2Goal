@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Time2Goal.View;
 
 using Xamarin.Forms;
 
 namespace Time2Goal
 {
-    public partial class App : Application
+    public class App : Application
     {
         public App()
         {
-            InitializeComponent();
-
-            MainPage = new Time2Goal.MainPage();
+            // The root page of your application
+            MainPage = new NavigationPage(new LoginView());
         }
 
         protected override void OnStart()

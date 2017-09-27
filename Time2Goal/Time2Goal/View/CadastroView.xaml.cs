@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace Time2Goal
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace Time2Goal.View
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CadastroView : ContentPage
     {
-        public MainPage()
+        public CadastroView()
         {
             InitializeComponent();
         }
