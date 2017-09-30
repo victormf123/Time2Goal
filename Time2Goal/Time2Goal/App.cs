@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Time2Goal.Models;
 using Time2Goal.View;
 
 using Xamarin.Forms;
@@ -13,11 +14,15 @@ namespace Time2Goal
         public App()
         {
             // The root page of your application
-            MainPage = new NavigationPage(new LoginView());
+            MainPage = new LoginView();
         }
 
         protected override void OnStart()
         {
+            MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin", (usuario) =>
+            {
+                MainPage = new NavigationPage(new Principal());
+            });
             // Handle when your app starts
         }
 
