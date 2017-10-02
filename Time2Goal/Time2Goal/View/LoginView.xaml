@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Time2Goal.ViewModel"
              x:Class="Time2Goal.View.LoginView"
-             Title="Time2Goal">
+             Title="Time2Goal"
+             BackgroundImage="login.png">
     <ContentPage.BindingContext>
         <vm:LoginViewModel></vm:LoginViewModel>
     </ContentPage.BindingContext>
@@ -15,6 +16,6 @@
         <Label Text="ou" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"></Label>
         <Button Text="LOGIN FACEBOOK" ></Button>
         <Label Text="ou"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"></Label>
-        <Button Text="LOGIN FACEBOOK"></Button>
+        <Button Text="CRIAR CONTA" Clicked="cadastrar"></Button>
     </StackLayout>
 </ContentPage>

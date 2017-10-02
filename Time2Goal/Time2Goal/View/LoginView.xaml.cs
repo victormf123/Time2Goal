@@ -15,6 +15,7 @@ namespace Time2Goal.View
         public LoginView()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing()
@@ -31,6 +32,13 @@ namespace Time2Goal.View
             base.OnDisappearing();
 
             MessagingCenter.Unsubscribe<LoginException>(this, "FalhaLogin");
+        }
+
+
+        private void cadastrar(object sender, EventArgs e)
+        {
+
+            Navigation.PushAsync(new CadastroView());
         }
     }
 }

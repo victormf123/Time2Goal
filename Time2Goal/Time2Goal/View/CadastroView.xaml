@@ -1,9 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Time2Goal.ViewModel"
              x:Class="Time2Goal.View.CadastroView"
+             xmlns:pages="clr-namespace:Time2Goal.View"
              Title="Cadastro">
+    <ContentPage.BindingContext>
+        <vm:CadastroViewModel></vm:CadastroViewModel>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Image Source="perfil.png"></Image>
+            <Entry Placeholder="Nome Completo" Text="{Binding}"></Entry>
+            <Entry Placeholder="Email" Text="{Binding}"></Entry>
+            <Entry IsPassword="True"  Placeholder="senha" Text="{Binding }"></Entry>
+            <Entry IsPassword="True"  Placeholder="Confirmar Senha" Text="{Binding }"></Entry>
+            <Editor HeightRequest="100" Text="{Binding}"></Editor>
+            <Button Text="Cadastrar"  HorizontalOptions="Fill" Command="{Binding}"></Button>
+            
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

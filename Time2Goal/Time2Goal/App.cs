@@ -11,17 +11,23 @@ namespace Time2Goal
 {
     public class App : Application
     {
+    
         public App()
         {
             // The root page of your application
-            MainPage = new LoginView();
+            MainPage = new NavigationPage(new LoginView());
         }
 
         protected override void OnStart()
         {
             MessagingCenter.Subscribe<Usuario>(this, "SucessoLogin", (usuario) =>
             {
-                MainPage = new NavigationPage(new Principal());
+                //MainPage = new NavigationPage(new Principal());
+                MainPage = new MasterDetailView();
+            });
+            MessagingCenter.Subscribe<object>(this, "SucessoCad", (usuario) =>
+            {
+                MainPage = new NavigationPage(new CadastroView());
             });
             // Handle when your app starts
         }

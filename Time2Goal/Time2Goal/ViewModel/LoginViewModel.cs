@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Windows.Input;
 using Time2Goal.Models;
+using Time2Goal.View;
 using Xamarin.Forms;
 
 namespace Time2Goal.ViewModel
@@ -34,12 +35,13 @@ namespace Time2Goal.ViewModel
         }
 
         public ICommand EntraCommand { get; private set; }
+        public ICommand CadastrarCommand { get; private set; }
 
         public LoginViewModel()
         {
+            var loginService = new LoginService();
             EntraCommand = new Command(async () =>
             {              
-                var loginService = new LoginService();
                 await loginService.FazerLogin(new Login(usuario, senha));
             }, () =>
             {

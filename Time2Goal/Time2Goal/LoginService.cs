@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Time2Goal.Models;
+using Time2Goal.View;
 using Xamarin.Forms;
 
 namespace Time2Goal
@@ -13,8 +14,7 @@ namespace Time2Goal
     {
         public async Task FazerLogin( Login login)
         {
-            try
-            {
+            
                 using (var cliente = new HttpClient())
                 {
                     var camposFormulario = new FormUrlEncodedContent(new[]
@@ -23,21 +23,30 @@ namespace Time2Goal
                         new KeyValuePair<string, string>("senha", login.senha)
                     });
                     cliente.BaseAddress = new Uri("https://aluracar.herokuapp.com");
-                    var resultado = await cliente.PostAsync("/login", camposFormulario);
-                    if (resultado.IsSuccessStatusCode)
+
+                    HttpResponseMessage resultado = null;
+                    try
+                    {
+                        resultado = await cliente.PostAsync("/login", camposFormulario);
+
+                    }
+                    catch
+                    {
+                        MessagingCenter.Send<LoginException>(new LoginException(@"Ocooreu um erro de comunicação com o servidor.
+por favor verifique a sua conexão e tente novamente mais tarde!"), "FalhaLogin");
+                    }
+                if (resultado.IsSuccessStatusCode)
                         MessagingCenter.Send<Usuario>(new Usuario(), "SucessoLogin");
                     else
-                    {
                         MessagingCenter.Send<LoginException>(new LoginException("Usuário ou senha incorretos"), "FalhaLogin");
-                    }
                 }
-            }
-            catch 
-            {
-                MessagingCenter.Send<LoginException>(new LoginException(@"Ocooreu um erro de comunicação com o servidor.
-por favor verifique a sua conexão e tente novamente mais tarde!"), "FalhaLogin");
-            }
+            
            
+        }
+
+        public async Task cadastrar()
+        {
+            MessagingCenter.Send<object>(this, "SucessoCad");
         }
     }
 
